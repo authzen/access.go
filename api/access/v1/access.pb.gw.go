@@ -207,7 +207,7 @@ func RegisterAccessHandlerServer(ctx context.Context, mux *runtime.ServeMux, ser
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/authzen.access.v1.Access/SubjectSearch", runtime.WithHTTPPathPattern("/access/v1/subjectsearch"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/authzen.access.v1.Access/SubjectSearch", runtime.WithHTTPPathPattern("/access/v1/search/subject"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -227,7 +227,7 @@ func RegisterAccessHandlerServer(ctx context.Context, mux *runtime.ServeMux, ser
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/authzen.access.v1.Access/ResourceSearch", runtime.WithHTTPPathPattern("/access/v1/resourcesearch"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/authzen.access.v1.Access/ResourceSearch", runtime.WithHTTPPathPattern("/access/v1/search/resource"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -247,7 +247,7 @@ func RegisterAccessHandlerServer(ctx context.Context, mux *runtime.ServeMux, ser
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/authzen.access.v1.Access/ActionSearch", runtime.WithHTTPPathPattern("/access/v1/actionsearch"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/authzen.access.v1.Access/ActionSearch", runtime.WithHTTPPathPattern("/access/v1/search/action"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -339,7 +339,7 @@ func RegisterAccessHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/authzen.access.v1.Access/SubjectSearch", runtime.WithHTTPPathPattern("/access/v1/subjectsearch"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/authzen.access.v1.Access/SubjectSearch", runtime.WithHTTPPathPattern("/access/v1/search/subject"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -356,7 +356,7 @@ func RegisterAccessHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/authzen.access.v1.Access/ResourceSearch", runtime.WithHTTPPathPattern("/access/v1/resourcesearch"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/authzen.access.v1.Access/ResourceSearch", runtime.WithHTTPPathPattern("/access/v1/search/resource"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -373,7 +373,7 @@ func RegisterAccessHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/authzen.access.v1.Access/ActionSearch", runtime.WithHTTPPathPattern("/access/v1/actionsearch"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/authzen.access.v1.Access/ActionSearch", runtime.WithHTTPPathPattern("/access/v1/search/action"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -392,9 +392,9 @@ func RegisterAccessHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 var (
 	pattern_Access_Evaluation_0     = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"access", "v1", "evaluation"}, ""))
 	pattern_Access_Evaluations_0    = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"access", "v1", "evaluations"}, ""))
-	pattern_Access_SubjectSearch_0  = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"access", "v1", "subjectsearch"}, ""))
-	pattern_Access_ResourceSearch_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"access", "v1", "resourcesearch"}, ""))
-	pattern_Access_ActionSearch_0   = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"access", "v1", "actionsearch"}, ""))
+	pattern_Access_SubjectSearch_0  = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"access", "v1", "search", "subject"}, ""))
+	pattern_Access_ResourceSearch_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"access", "v1", "search", "resource"}, ""))
+	pattern_Access_ActionSearch_0   = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"access", "v1", "search", "action"}, ""))
 )
 
 var (
