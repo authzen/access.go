@@ -19,8 +19,11 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Access_Evaluation_FullMethodName  = "/authzen.access.v1.Access/Evaluation"
-	Access_Evaluations_FullMethodName = "/authzen.access.v1.Access/Evaluations"
+	Access_Evaluation_FullMethodName     = "/authzen.access.v1.Access/Evaluation"
+	Access_Evaluations_FullMethodName    = "/authzen.access.v1.Access/Evaluations"
+	Access_SubjectSearch_FullMethodName  = "/authzen.access.v1.Access/SubjectSearch"
+	Access_ResourceSearch_FullMethodName = "/authzen.access.v1.Access/ResourceSearch"
+	Access_ActionSearch_FullMethodName   = "/authzen.access.v1.Access/ActionSearch"
 )
 
 // AccessClient is the client API for Access service.
@@ -31,6 +34,12 @@ type AccessClient interface {
 	Evaluation(ctx context.Context, in *EvaluationRequest, opts ...grpc.CallOption) (*EvaluationResponse, error)
 	// evaluations
 	Evaluations(ctx context.Context, in *EvaluationsRequest, opts ...grpc.CallOption) (*EvaluationsResponse, error)
+	// subject search
+	SubjectSearch(ctx context.Context, in *SubjectSearchRequest, opts ...grpc.CallOption) (*SubjectSearchResponse, error)
+	// resource search
+	ResourceSearch(ctx context.Context, in *ResourceSearchRequest, opts ...grpc.CallOption) (*ResourceSearchResponse, error)
+	// action search
+	ActionSearch(ctx context.Context, in *ActionSearchRequest, opts ...grpc.CallOption) (*ActionSearchResponse, error)
 }
 
 type accessClient struct {
@@ -61,6 +70,36 @@ func (c *accessClient) Evaluations(ctx context.Context, in *EvaluationsRequest, 
 	return out, nil
 }
 
+func (c *accessClient) SubjectSearch(ctx context.Context, in *SubjectSearchRequest, opts ...grpc.CallOption) (*SubjectSearchResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SubjectSearchResponse)
+	err := c.cc.Invoke(ctx, Access_SubjectSearch_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accessClient) ResourceSearch(ctx context.Context, in *ResourceSearchRequest, opts ...grpc.CallOption) (*ResourceSearchResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResourceSearchResponse)
+	err := c.cc.Invoke(ctx, Access_ResourceSearch_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accessClient) ActionSearch(ctx context.Context, in *ActionSearchRequest, opts ...grpc.CallOption) (*ActionSearchResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ActionSearchResponse)
+	err := c.cc.Invoke(ctx, Access_ActionSearch_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AccessServer is the server API for Access service.
 // All implementations should embed UnimplementedAccessServer
 // for forward compatibility.
@@ -69,6 +108,12 @@ type AccessServer interface {
 	Evaluation(context.Context, *EvaluationRequest) (*EvaluationResponse, error)
 	// evaluations
 	Evaluations(context.Context, *EvaluationsRequest) (*EvaluationsResponse, error)
+	// subject search
+	SubjectSearch(context.Context, *SubjectSearchRequest) (*SubjectSearchResponse, error)
+	// resource search
+	ResourceSearch(context.Context, *ResourceSearchRequest) (*ResourceSearchResponse, error)
+	// action search
+	ActionSearch(context.Context, *ActionSearchRequest) (*ActionSearchResponse, error)
 }
 
 // UnimplementedAccessServer should be embedded to have
@@ -83,6 +128,15 @@ func (UnimplementedAccessServer) Evaluation(context.Context, *EvaluationRequest)
 }
 func (UnimplementedAccessServer) Evaluations(context.Context, *EvaluationsRequest) (*EvaluationsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Evaluations not implemented")
+}
+func (UnimplementedAccessServer) SubjectSearch(context.Context, *SubjectSearchRequest) (*SubjectSearchResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SubjectSearch not implemented")
+}
+func (UnimplementedAccessServer) ResourceSearch(context.Context, *ResourceSearchRequest) (*ResourceSearchResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResourceSearch not implemented")
+}
+func (UnimplementedAccessServer) ActionSearch(context.Context, *ActionSearchRequest) (*ActionSearchResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ActionSearch not implemented")
 }
 func (UnimplementedAccessServer) testEmbeddedByValue() {}
 
@@ -140,6 +194,60 @@ func _Access_Evaluations_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Access_SubjectSearch_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SubjectSearchRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccessServer).SubjectSearch(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Access_SubjectSearch_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccessServer).SubjectSearch(ctx, req.(*SubjectSearchRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Access_ResourceSearch_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResourceSearchRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccessServer).ResourceSearch(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Access_ResourceSearch_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccessServer).ResourceSearch(ctx, req.(*ResourceSearchRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Access_ActionSearch_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ActionSearchRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccessServer).ActionSearch(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Access_ActionSearch_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccessServer).ActionSearch(ctx, req.(*ActionSearchRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Access_ServiceDesc is the grpc.ServiceDesc for Access service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -154,6 +262,18 @@ var Access_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Evaluations",
 			Handler:    _Access_Evaluations_Handler,
+		},
+		{
+			MethodName: "SubjectSearch",
+			Handler:    _Access_SubjectSearch_Handler,
+		},
+		{
+			MethodName: "ResourceSearch",
+			Handler:    _Access_ResourceSearch_Handler,
+		},
+		{
+			MethodName: "ActionSearch",
+			Handler:    _Access_ActionSearch_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
