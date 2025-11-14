@@ -9,12 +9,12 @@ ATTN_COLOR         := \033[33;01m
 OS                 := $(shell uname -s | tr '[:upper:]' '[:lower:]')
 ARCH               := $(shell uname -m | tr '[:upper:]' '[:lower:]')
 
-EXT_DIR            := ./.ext
+EXT_DIR            := ${PWD}/.ext
 EXT_BIN_DIR        := ${EXT_DIR}/bin
 EXT_TMP_DIR        := ${EXT_DIR}/tmp
 
-SVU_VER 	         := 3.2.3
-BUF_VER            := 1.54.0
+SVU_VER 	         := 3.3.0
+BUF_VER            := 1.59.0
 
 PROJECT            := access
 
@@ -23,12 +23,12 @@ GIT_REPO           := "${GIT_ORG}/${PROJECT}"
 
 BUF_ORG            := "buf.build/authzen"
 BUF_REPO           := "${BUF_ORG}/${PROJECT}"
-BUF_LATEST         := $(shell ${EXT_BIN_DIR}/buf registry module label list ${BUF_REPO} --format json --reverse | jq -r '.labels[0].name')
+BUF_LATEST         := $(shell ${EXT_BIN_DIR}/buf registry module label list ${BUF_REPO} --format json | jq -r '.labels[0].name')
 BUF_BIN_DIR        := ./bin
 BUF_BIN_IMAGE      := ${PROJECT}.bin
 PROTO_REPO         := access
 
-RELEASE_TAG        := $$(${EXT_BIN_DIR}/svu)
+RELEASE_TAG        := $$(${EXT_BIN_DIR}/svu current)
 
 .DEFAULT_GOAL      := buf-build
 
@@ -81,20 +81,11 @@ ${EXT_BIN_DIR}/buf: ${EXT_BIN_DIR}
 	@chmod +x ${EXT_BIN_DIR}/buf
 	@${EXT_BIN_DIR}/buf --version
 
-${EXT_BIN_DIR}/svu: install-svu-${OS}
+${EXT_BIN_DIR}/svu: ${EXT_BIN_DIR}
 	@echo -e "$(ATTN_COLOR)==> $@ $(NO_COLOR)"
+	@GOBIN=${EXT_BIN_DIR} go install github.com/caarlos0/svu/v3@v${SVU_VER}
 	@chmod +x ${EXT_BIN_DIR}/svu
 	@${EXT_BIN_DIR}/svu --version
-
-install-svu-darwin: ${EXT_TMP_DIR} ${EXT_BIN_DIR}
-	@echo -e "$(ATTN_COLOR)==> $@ $(NO_COLOR)"
-	@gh release download v${SVU_VER} --repo https://github.com/caarlos0/svu --pattern "svu_${SVU_VER}_${OS}_all.tar.gz" --output "${EXT_TMP_DIR}/svu.tar.gz" --clobber
-	@tar -xvf ${EXT_TMP_DIR}/svu.tar.gz --directory ${EXT_BIN_DIR} svu &> /dev/null
-
-install-svu-linux: ${EXT_TMP_DIR} ${EXT_BIN_DIR}
-	@echo -e "$(ATTN_COLOR)==> $@ $(NO_COLOR)"
-	@gh release download  v${SVU_VER} --repo https://github.com/caarlos0/svu --pattern "svu_${SVU_VER}_${OS}_${ARCH}.tar.gz" --output "${EXT_TMP_DIR}/svu.tar.gz" --clobber
-	@tar -xvf ${EXT_TMP_DIR}/svu.tar.gz --directory ${EXT_BIN_DIR} svu &> /dev/null
 
 .PHONY: clean
 clean:
