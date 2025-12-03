@@ -30,15 +30,15 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AccessClient interface {
-	// evaluation
+	// evaluation (https://openid.github.io/authzen/#name-access-evaluation-api)
 	Evaluation(ctx context.Context, in *EvaluationRequest, opts ...grpc.CallOption) (*EvaluationResponse, error)
-	// evaluations
+	// evaluations (https://openid.github.io/authzen/#name-access-evaluations-api)
 	Evaluations(ctx context.Context, in *EvaluationsRequest, opts ...grpc.CallOption) (*EvaluationsResponse, error)
-	// subject search
+	// subject search (https://openid.github.io/authzen/#name-subject-search-api)
 	SubjectSearch(ctx context.Context, in *SubjectSearchRequest, opts ...grpc.CallOption) (*SubjectSearchResponse, error)
-	// resource search
+	// resource search (https://openid.github.io/authzen/#name-resource-search-api)
 	ResourceSearch(ctx context.Context, in *ResourceSearchRequest, opts ...grpc.CallOption) (*ResourceSearchResponse, error)
-	// action search
+	// action search (https://openid.github.io/authzen/#name-action-search-api)
 	ActionSearch(ctx context.Context, in *ActionSearchRequest, opts ...grpc.CallOption) (*ActionSearchResponse, error)
 }
 
@@ -104,15 +104,15 @@ func (c *accessClient) ActionSearch(ctx context.Context, in *ActionSearchRequest
 // All implementations should embed UnimplementedAccessServer
 // for forward compatibility.
 type AccessServer interface {
-	// evaluation
+	// evaluation (https://openid.github.io/authzen/#name-access-evaluation-api)
 	Evaluation(context.Context, *EvaluationRequest) (*EvaluationResponse, error)
-	// evaluations
+	// evaluations (https://openid.github.io/authzen/#name-access-evaluations-api)
 	Evaluations(context.Context, *EvaluationsRequest) (*EvaluationsResponse, error)
-	// subject search
+	// subject search (https://openid.github.io/authzen/#name-subject-search-api)
 	SubjectSearch(context.Context, *SubjectSearchRequest) (*SubjectSearchResponse, error)
-	// resource search
+	// resource search (https://openid.github.io/authzen/#name-resource-search-api)
 	ResourceSearch(context.Context, *ResourceSearchRequest) (*ResourceSearchResponse, error)
-	// action search
+	// action search (https://openid.github.io/authzen/#name-action-search-api)
 	ActionSearch(context.Context, *ActionSearchRequest) (*ActionSearchResponse, error)
 }
 
