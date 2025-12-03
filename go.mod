@@ -1,6 +1,6 @@
 module github.com/authzen/access.go
 
-go 1.23.5
+go 1.24
 
 require (
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.26.3
