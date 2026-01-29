@@ -1081,10 +1081,10 @@ const file_access_v1_access_proto_rawDesc = "" +
 	"\x0eResourceSearch\x12(.authzen.access.v1.ResourceSearchRequest\x1a).authzen.access.v1.ResourceSearchResponse\"r\x92AJ\n" +
 	"\aauthzen\x12\x13Resource Search API\x1a\x04TBD.*$openid.authzen.access.v1.search.post\x82\xd3\xe4\x93\x02\x1f:\x01*\"\x1a/access/v1/search/resource\x12\xd6\x01\n" +
 	"\fActionSearch\x12&.authzen.access.v1.ActionSearchRequest\x1a'.authzen.access.v1.ActionSearchResponse\"u\x92AO\n" +
-	"\aauthzen\x12\x11Action Search API\x1a\x04TBD.*+openid.authzen.access.v1.search.action.post\x82\xd3\xe4\x93\x02\x1d:\x01*\"\x18/access/v1/search/actionB\x81\x04\x92A\xce\x02\x12\x82\x01\n" +
+	"\aauthzen\x12\x11Action Search API\x1a\x04TBD.*+openid.authzen.access.v1.search.action.post\x82\xd3\xe4\x93\x02\x1d:\x01*\"\x18/access/v1/search/actionB\xf2\x04\x92A\xbf\x03\x12\xb5\x01\n" +
 	"\x1dOpenID AuthZen Access Service\"K\n" +
-	")OpenID Foundation - AuthZEN Working Group\x12\x1ehttps://openid.net/wg/authzen/*\v\n" +
-	"\tApache v22\a1.0.0-5*\x02\x01\x022\x10application/json:\x10application/jsonR\x14\n" +
+	")OpenID Foundation - AuthZEN Working Group\x12\x1ehttps://openid.net/wg/authzen/*@\n" +
+	"\tApache v2\x123https://github.com/authzen/access/blob/main/LICENSE2\x051.0.0*\x02\x01\x022\x10application/json:\x10application/jsonR\x14\n" +
 	"\x03400\x12\r\n" +
 	"\vBad RequestR\x15\n" +
 	"\x03401\x12\x0e\n" +
@@ -1092,8 +1092,12 @@ const file_access_v1_access_proto_rawDesc = "" +
 	"\x03403\x12\v\n" +
 	"\tForbiddenR\x17\n" +
 	"\x03500\x12\x10\n" +
-	"\x0eInternal errorrE\n" +
-	" Authorization API 1.0 - draft 05\x12!https://openid.github.io/authzen/\n" +
+	"\x0eInternal errorZ,\n" +
+	"*\n" +
+	"\x13AuthorizationHeader\x12\x13\b\x02\x1a\rauthorization \x02b\x19\n" +
+	"\x17\n" +
+	"\x13AuthorizationHeader\x12\x00r:\n" +
+	"\x15Authorization API 1.0\x12!https://openid.github.io/authzen/\n" +
 	"\x15com.authzen.access.v1B\vAccessProtoP\x01Z#github.com/authzen/access/v1;access\xa2\x02\x03AAX\xaa\x02\x11Authzen.Access.V1\xca\x02\x11Authzen\\Access\\V1\xe2\x02\x1dAuthzen\\Access\\V1\\GPBMetadata\xea\x02\x13Authzen::Access::V1b\x06proto3"
 
 var (
