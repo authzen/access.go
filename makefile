@@ -23,7 +23,7 @@ GIT_REPO           := "${GIT_ORG}/${PROJECT}"
 
 BUF_ORG            := "buf.build/authzen"
 BUF_REPO           := "${BUF_ORG}/${PROJECT}"
-BUF_LATEST         := $(shell ${EXT_BIN_DIR}/buf registry module label list ${BUF_REPO} --format json --reverse | jq -r '.labels[0].name')
+BUF_LATEST         := $(shell ${EXT_BIN_DIR}/buf registry module label list ${BUF_REPO} --format json | jq -r '.labels[0].name')
 BUF_BIN_DIR        := ./bin
 BUF_BIN_IMAGE      := ${PROJECT}.bin
 PROTO_REPO         := access
