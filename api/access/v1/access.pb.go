@@ -153,8 +153,8 @@ type EvaluationsRequest struct {
 	Action        *Action                `protobuf:"bytes,2,opt,name=action,proto3" json:"action,omitempty"`
 	Resource      *Resource              `protobuf:"bytes,3,opt,name=resource,proto3" json:"resource,omitempty"`
 	Context       *structpb.Struct       `protobuf:"bytes,4,opt,name=context,proto3,oneof" json:"context,omitempty"`
-	Evaluations   []*EvaluationRequest   `protobuf:"bytes,5,rep,name=evaluations,proto3" json:"evaluations,omitempty"`
-	Options       *structpb.Struct       `protobuf:"bytes,6,opt,name=options,proto3" json:"options,omitempty"`
+	Options       *structpb.Struct       `protobuf:"bytes,5,opt,name=options,proto3,oneof" json:"options,omitempty"`
+	Evaluations   []*EvaluationRequest   `protobuf:"bytes,6,rep,name=evaluations,proto3" json:"evaluations,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -217,16 +217,16 @@ func (x *EvaluationsRequest) GetContext() *structpb.Struct {
 	return nil
 }
 
-func (x *EvaluationsRequest) GetEvaluations() []*EvaluationRequest {
+func (x *EvaluationsRequest) GetOptions() *structpb.Struct {
 	if x != nil {
-		return x.Evaluations
+		return x.Options
 	}
 	return nil
 }
 
-func (x *EvaluationsRequest) GetOptions() *structpb.Struct {
+func (x *EvaluationsRequest) GetEvaluations() []*EvaluationRequest {
 	if x != nil {
-		return x.Options
+		return x.Evaluations
 	}
 	return nil
 }
@@ -985,16 +985,18 @@ const file_access_v1_access_proto_rawDesc = "" +
 	"\b_context\"c\n" +
 	"\x12EvaluationResponse\x12\x1a\n" +
 	"\bdecision\x18\x01 \x01(\bR\bdecision\x121\n" +
-	"\acontext\x18\x02 \x01(\v2\x17.google.protobuf.StructR\acontext\"\xf5\x02\n" +
+	"\acontext\x18\x02 \x01(\v2\x17.google.protobuf.StructR\acontext\"\x86\x03\n" +
 	"\x12EvaluationsRequest\x124\n" +
 	"\asubject\x18\x01 \x01(\v2\x1a.authzen.access.v1.SubjectR\asubject\x121\n" +
 	"\x06action\x18\x02 \x01(\v2\x19.authzen.access.v1.ActionR\x06action\x127\n" +
 	"\bresource\x18\x03 \x01(\v2\x1b.authzen.access.v1.ResourceR\bresource\x126\n" +
-	"\acontext\x18\x04 \x01(\v2\x17.google.protobuf.StructH\x00R\acontext\x88\x01\x01\x12F\n" +
-	"\vevaluations\x18\x05 \x03(\v2$.authzen.access.v1.EvaluationRequestR\vevaluations\x121\n" +
-	"\aoptions\x18\x06 \x01(\v2\x17.google.protobuf.StructR\aoptionsB\n" +
+	"\acontext\x18\x04 \x01(\v2\x17.google.protobuf.StructH\x00R\acontext\x88\x01\x01\x126\n" +
+	"\aoptions\x18\x05 \x01(\v2\x17.google.protobuf.StructH\x01R\aoptions\x88\x01\x01\x12F\n" +
+	"\vevaluations\x18\x06 \x03(\v2$.authzen.access.v1.EvaluationRequestR\vevaluationsB\n" +
 	"\n" +
-	"\b_context\"^\n" +
+	"\b_contextB\n" +
+	"\n" +
+	"\b_options\"^\n" +
 	"\x13EvaluationsResponse\x12G\n" +
 	"\vevaluations\x18\x01 \x03(\v2%.authzen.access.v1.EvaluationResponseR\vevaluations\"\xa5\x02\n" +
 	"\x14SubjectSearchRequest\x124\n" +
@@ -1084,7 +1086,7 @@ const file_access_v1_access_proto_rawDesc = "" +
 	"\aauthzen\x12\x11Action Search API\x1a\x04TBD.*+openid.authzen.access.v1.search.action.post\x82\xd3\xe4\x93\x02\x1d:\x01*\"\x18/access/v1/search/actionB\xf2\x04\x92A\xbf\x03\x12\xb5\x01\n" +
 	"\x1dOpenID AuthZen Access Service\"K\n" +
 	")OpenID Foundation - AuthZEN Working Group\x12\x1ehttps://openid.net/wg/authzen/*@\n" +
-	"\tApache v2\x123https://github.com/authzen/access/blob/main/LICENSE2\x051.0.0*\x02\x01\x022\x10application/json:\x10application/jsonR\x14\n" +
+	"\tApache v2\x123https://github.com/authzen/access/blob/main/LICENSE2\x051.0.1*\x02\x01\x022\x10application/json:\x10application/jsonR\x14\n" +
 	"\x03400\x12\r\n" +
 	"\vBad RequestR\x15\n" +
 	"\x03401\x12\x0e\n" +
@@ -1141,8 +1143,8 @@ var file_access_v1_access_proto_depIdxs = []int32{
 	11, // 6: authzen.access.v1.EvaluationsRequest.action:type_name -> authzen.access.v1.Action
 	12, // 7: authzen.access.v1.EvaluationsRequest.resource:type_name -> authzen.access.v1.Resource
 	15, // 8: authzen.access.v1.EvaluationsRequest.context:type_name -> google.protobuf.Struct
-	0,  // 9: authzen.access.v1.EvaluationsRequest.evaluations:type_name -> authzen.access.v1.EvaluationRequest
-	15, // 10: authzen.access.v1.EvaluationsRequest.options:type_name -> google.protobuf.Struct
+	15, // 9: authzen.access.v1.EvaluationsRequest.options:type_name -> google.protobuf.Struct
+	0,  // 10: authzen.access.v1.EvaluationsRequest.evaluations:type_name -> authzen.access.v1.EvaluationRequest
 	1,  // 11: authzen.access.v1.EvaluationsResponse.evaluations:type_name -> authzen.access.v1.EvaluationResponse
 	10, // 12: authzen.access.v1.SubjectSearchRequest.subject:type_name -> authzen.access.v1.Subject
 	11, // 13: authzen.access.v1.SubjectSearchRequest.action:type_name -> authzen.access.v1.Action
