@@ -1086,7 +1086,7 @@ const file_access_v1_access_proto_rawDesc = "" +
 	"\aauthzen\x12\x11Action Search API\x1a\x04TBD.*+openid.authzen.access.v1.search.action.post\x82\xd3\xe4\x93\x02\x1d:\x01*\"\x18/access/v1/search/actionB\xf2\x04\x92A\xbf\x03\x12\xb5\x01\n" +
 	"\x1dOpenID AuthZen Access Service\"K\n" +
 	")OpenID Foundation - AuthZEN Working Group\x12\x1ehttps://openid.net/wg/authzen/*@\n" +
-	"\tApache v2\x123https://github.com/authzen/access/blob/main/LICENSE2\x051.0.1*\x02\x01\x022\x10application/json:\x10application/jsonR\x14\n" +
+	"\tApache v2\x123https://github.com/authzen/access/blob/main/LICENSE2\x051.0.0*\x02\x01\x022\x10application/json:\x10application/jsonR\x14\n" +
 	"\x03400\x12\r\n" +
 	"\vBad RequestR\x15\n" +
 	"\x03401\x12\x0e\n" +
