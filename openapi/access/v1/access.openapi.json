@@ -1,0 +1,504 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "access",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/access/v1/evaluation": {
+      "post": {
+        "tags": [
+          "Access"
+        ],
+        "summary": "evaluation (https://openid.github.io/authzen/#name-access-evaluation-api)",
+        "operationId": "Access_Evaluation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "action": {
+                    "$ref": "#/components/schemas/authzen.access.v1.Action"
+                  },
+                  "context": {
+                    "type": "object"
+                  },
+                  "resource": {
+                    "$ref": "#/components/schemas/authzen.access.v1.Resource"
+                  },
+                  "subject": {
+                    "$ref": "#/components/schemas/authzen.access.v1.Subject"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/google.rpc.Status"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "https://openid.github.io/authzen/#name-the-access-evaluation-api-re",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/authzen.access.v1.EvaluationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/access/v1/evaluations": {
+      "post": {
+        "tags": [
+          "Access"
+        ],
+        "summary": "evaluations (https://openid.github.io/authzen/#name-access-evaluations-api)",
+        "operationId": "Access_Evaluations",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "action": {
+                    "$ref": "#/components/schemas/authzen.access.v1.Action"
+                  },
+                  "context": {
+                    "type": "object"
+                  },
+                  "evaluations": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/authzen.access.v1.EvaluationRequest"
+                    }
+                  },
+                  "options": {
+                    "type": "object"
+                  },
+                  "resource": {
+                    "$ref": "#/components/schemas/authzen.access.v1.Resource"
+                  },
+                  "subject": {
+                    "$ref": "#/components/schemas/authzen.access.v1.Subject"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/google.rpc.Status"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "https://openid.github.io/authzen/#name-access-evaluations-api-resp",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/authzen.access.v1.EvaluationsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/access/v1/search/subject": {
+      "post": {
+        "tags": [
+          "Access"
+        ],
+        "summary": "subject search (https://openid.github.io/authzen/#name-subject-search-api)",
+        "operationId": "Access_SubjectSearch",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "action": {
+                    "$ref": "#/components/schemas/authzen.access.v1.Action"
+                  },
+                  "context": {
+                    "type": "object"
+                  },
+                  "page": {
+                    "$ref": "#/components/schemas/authzen.access.v1.PaginationRequest"
+                  },
+                  "resource": {
+                    "$ref": "#/components/schemas/authzen.access.v1.Resource"
+                  },
+                  "subject": {
+                    "$ref": "#/components/schemas/authzen.access.v1.Subject"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/google.rpc.Status"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "https://openid.github.io/authzen/#name-the-subject-search-api-resp",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/authzen.access.v1.SubjectSearchResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/access/v1/search/resource": {
+      "post": {
+        "tags": [
+          "Access"
+        ],
+        "summary": "resource search (https://openid.github.io/authzen/#name-resource-search-api)",
+        "operationId": "Access_ResourceSearch",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "action": {
+                    "$ref": "#/components/schemas/authzen.access.v1.Action"
+                  },
+                  "context": {
+                    "type": "object"
+                  },
+                  "page": {
+                    "$ref": "#/components/schemas/authzen.access.v1.PaginationRequest"
+                  },
+                  "resource": {
+                    "$ref": "#/components/schemas/authzen.access.v1.Resource"
+                  },
+                  "subject": {
+                    "$ref": "#/components/schemas/authzen.access.v1.Subject"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/google.rpc.Status"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "https://openid.github.io/authzen/#name-the-resource-search-api-res",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/authzen.access.v1.ResourceSearchResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/access/v1/search/action": {
+      "post": {
+        "tags": [
+          "Access"
+        ],
+        "summary": "action search (https://openid.github.io/authzen/#name-action-search-api)",
+        "operationId": "Access_ActionSearch",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "action": {
+                    "$ref": "#/components/schemas/authzen.access.v1.Action"
+                  },
+                  "context": {
+                    "type": "object"
+                  },
+                  "page": {
+                    "$ref": "#/components/schemas/authzen.access.v1.PaginationRequest"
+                  },
+                  "resource": {
+                    "$ref": "#/components/schemas/authzen.access.v1.Resource"
+                  },
+                  "subject": {
+                    "$ref": "#/components/schemas/authzen.access.v1.Subject"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/google.rpc.Status"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "https://openid.github.io/authzen/#name-the-action-search-api-respo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/authzen.access.v1.ActionSearchResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "authzen.access.v1.Action": {
+        "type": "object",
+        "description": "https://openid.github.io/authzen/#name-action",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "properties": {
+            "type": "object"
+          }
+        }
+      },
+      "authzen.access.v1.ActionSearchResponse": {
+        "type": "object",
+        "description": "https://openid.github.io/authzen/#name-the-action-search-api-respo",
+        "properties": {
+          "page": {
+            "$ref": "#/components/schemas/authzen.access.v1.PaginationResponse"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/authzen.access.v1.Action"
+            }
+          }
+        }
+      },
+      "authzen.access.v1.EvaluationRequest": {
+        "type": "object",
+        "description": "https://openid.github.io/authzen/#name-the-access-evaluation-api-r",
+        "properties": {
+          "action": {
+            "$ref": "#/components/schemas/authzen.access.v1.Action"
+          },
+          "context": {
+            "type": "object"
+          },
+          "resource": {
+            "$ref": "#/components/schemas/authzen.access.v1.Resource"
+          },
+          "subject": {
+            "$ref": "#/components/schemas/authzen.access.v1.Subject"
+          }
+        }
+      },
+      "authzen.access.v1.EvaluationResponse": {
+        "type": "object",
+        "description": "https://openid.github.io/authzen/#name-the-access-evaluation-api-re",
+        "properties": {
+          "context": {
+            "type": "object"
+          },
+          "decision": {
+            "type": "boolean"
+          }
+        }
+      },
+      "authzen.access.v1.EvaluationsResponse": {
+        "type": "object",
+        "description": "https://openid.github.io/authzen/#name-access-evaluations-api-resp",
+        "properties": {
+          "evaluations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/authzen.access.v1.EvaluationResponse"
+            }
+          }
+        }
+      },
+      "authzen.access.v1.PaginationRequest": {
+        "type": "object",
+        "description": "https://openid.github.io/authzen/#name-paginated-requests",
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "properties": {
+            "type": "object"
+          },
+          "token": {
+            "type": "string"
+          }
+        }
+      },
+      "authzen.access.v1.PaginationResponse": {
+        "type": "object",
+        "description": "https://openid.github.io/authzen/#name-paginated-responses",
+        "properties": {
+          "count": {
+            "type": "string",
+            "format": "int64"
+          },
+          "nextToken": {
+            "type": "string"
+          },
+          "properties": {
+            "type": "object"
+          },
+          "total": {
+            "type": "string",
+            "format": "int64"
+          }
+        }
+      },
+      "authzen.access.v1.Resource": {
+        "type": "object",
+        "description": "https://openid.github.io/authzen/#name-resource",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "properties": {
+            "type": "object"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      },
+      "authzen.access.v1.ResourceSearchResponse": {
+        "type": "object",
+        "description": "https://openid.github.io/authzen/#name-the-resource-search-api-res",
+        "properties": {
+          "page": {
+            "$ref": "#/components/schemas/authzen.access.v1.PaginationResponse"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/authzen.access.v1.Resource"
+            }
+          }
+        }
+      },
+      "authzen.access.v1.Subject": {
+        "type": "object",
+        "description": "https://openid.github.io/authzen/#name-subject",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "properties": {
+            "type": "object"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      },
+      "authzen.access.v1.SubjectSearchResponse": {
+        "type": "object",
+        "description": "https://openid.github.io/authzen/#name-the-subject-search-api-resp",
+        "properties": {
+          "page": {
+            "$ref": "#/components/schemas/authzen.access.v1.PaginationResponse"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/authzen.access.v1.Subject"
+            }
+          }
+        }
+      },
+      "google.rpc.Status": {
+        "type": "object",
+        "description": "The Status type defines a logical error model suitable for different programming environments.",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The status code, which should be an enum value of google.rpc.Code."
+          },
+          "details": {
+            "type": "array",
+            "description": "A list of messages that carry the error details.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A developer-facing error message."
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Access"
+    }
+  ]
+}
