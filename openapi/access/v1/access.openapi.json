@@ -1,17 +1,34 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "access",
+    "title": "OpenID AuthZen Access Service",
+    "contact": {
+      "name": "OpenID Foundation - AuthZEN Working Group",
+      "url": "https://openid.net/wg/authzen/"
+    },
+    "license": {
+      "name": "Apache v2",
+      "url": "https://github.com/authzen/access/blob/main/LICENSE"
+    },
     "version": "1.0.0"
   },
+  "servers": [
+    {
+      "url": "{{.Scheme}}://{{.Host}}",
+      "description": "OpenID AuthZEN service"
+    }
+  ],
   "paths": {
     "/access/v1/evaluation": {
       "post": {
         "tags": [
-          "Access"
+          "authzen",
+          "evaluation",
+          "check"
         ],
-        "summary": "evaluation (https://openid.github.io/authzen/#name-access-evaluation-api)",
-        "operationId": "Access_Evaluation",
+        "summary": "Access Evaluation API",
+        "description": "TBD",
+        "operationId": "openid.authzen.access.v1.evaluation.post",
         "requestBody": {
           "content": {
             "application/json": {
@@ -30,7 +47,12 @@
                   "subject": {
                     "$ref": "#/components/schemas/authzen.access.v1.Subject"
                   }
-                }
+                },
+                "required": [
+                  "subject",
+                  "action",
+                  "resource"
+                ]
               }
             }
           },
@@ -63,10 +85,13 @@
     "/access/v1/evaluations": {
       "post": {
         "tags": [
-          "Access"
+          "authzen",
+          "evaluations",
+          "check"
         ],
-        "summary": "evaluations (https://openid.github.io/authzen/#name-access-evaluations-api)",
-        "operationId": "Access_Evaluations",
+        "summary": "Access Evaluations API",
+        "description": "TBD.",
+        "operationId": "openid.authzen.access.v1.evaluations.post",
         "requestBody": {
           "content": {
             "application/json": {
@@ -127,10 +152,14 @@
     "/access/v1/search/subject": {
       "post": {
         "tags": [
-          "Access"
+          "authzen",
+          "subject",
+          "search",
+          "authzen"
         ],
-        "summary": "subject search (https://openid.github.io/authzen/#name-subject-search-api)",
-        "operationId": "Access_SubjectSearch",
+        "summary": "Subject Search API",
+        "description": "TBD.",
+        "operationId": "openid.authzen.access.v1.search.subject.post",
         "requestBody": {
           "content": {
             "application/json": {
@@ -152,7 +181,12 @@
                   "subject": {
                     "$ref": "#/components/schemas/authzen.access.v1.Subject"
                   }
-                }
+                },
+                "required": [
+                  "subject",
+                  "action",
+                  "resource"
+                ]
               }
             }
           },
@@ -185,10 +219,13 @@
     "/access/v1/search/resource": {
       "post": {
         "tags": [
-          "Access"
+          "authzen",
+          "resource",
+          "search"
         ],
-        "summary": "resource search (https://openid.github.io/authzen/#name-resource-search-api)",
-        "operationId": "Access_ResourceSearch",
+        "summary": "Resource Search API",
+        "description": "TBD.",
+        "operationId": "openid.authzen.access.v1.search.post",
         "requestBody": {
           "content": {
             "application/json": {
@@ -210,7 +247,12 @@
                   "subject": {
                     "$ref": "#/components/schemas/authzen.access.v1.Subject"
                   }
-                }
+                },
+                "required": [
+                  "subject",
+                  "action",
+                  "resource"
+                ]
               }
             }
           },
@@ -243,10 +285,13 @@
     "/access/v1/search/action": {
       "post": {
         "tags": [
-          "Access"
+          "authzen",
+          "action",
+          "search"
         ],
-        "summary": "action search (https://openid.github.io/authzen/#name-action-search-api)",
-        "operationId": "Access_ActionSearch",
+        "summary": "Action Search API",
+        "description": "TBD.",
+        "operationId": "openid.authzen.access.v1.search.action.post",
         "requestBody": {
           "content": {
             "application/json": {
@@ -268,7 +313,12 @@
                   "subject": {
                     "$ref": "#/components/schemas/authzen.access.v1.Subject"
                   }
-                }
+                },
+                "required": [
+                  "subject",
+                  "action",
+                  "resource"
+                ]
               }
             }
           },
@@ -318,13 +368,19 @@
         "description": "https://openid.github.io/authzen/#name-the-action-search-api-respo",
         "properties": {
           "page": {
-            "$ref": "#/components/schemas/authzen.access.v1.PaginationResponse"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/authzen.access.v1.PaginationResponse"
+              }
+            ],
+            "readOnly": true
           },
           "results": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/authzen.access.v1.Action"
-            }
+            },
+            "readOnly": true
           }
         }
       },
@@ -344,17 +400,24 @@
           "subject": {
             "$ref": "#/components/schemas/authzen.access.v1.Subject"
           }
-        }
+        },
+        "required": [
+          "subject",
+          "action",
+          "resource"
+        ]
       },
       "authzen.access.v1.EvaluationResponse": {
         "type": "object",
         "description": "https://openid.github.io/authzen/#name-the-access-evaluation-api-re",
         "properties": {
           "context": {
-            "type": "object"
+            "type": "object",
+            "readOnly": true
           },
           "decision": {
-            "type": "boolean"
+            "type": "boolean",
+            "readOnly": true
           }
         }
       },
@@ -366,7 +429,8 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/authzen.access.v1.EvaluationResponse"
-            }
+            },
+            "readOnly": true
           }
         }
       },
@@ -392,17 +456,21 @@
         "properties": {
           "count": {
             "type": "string",
-            "format": "int64"
+            "format": "int64",
+            "readOnly": true
           },
-          "nextToken": {
-            "type": "string"
+          "next_token": {
+            "type": "string",
+            "readOnly": true
           },
           "properties": {
-            "type": "object"
+            "type": "object",
+            "readOnly": true
           },
           "total": {
             "type": "string",
-            "format": "int64"
+            "format": "int64",
+            "readOnly": true
           }
         }
       },
@@ -426,13 +494,19 @@
         "description": "https://openid.github.io/authzen/#name-the-resource-search-api-res",
         "properties": {
           "page": {
-            "$ref": "#/components/schemas/authzen.access.v1.PaginationResponse"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/authzen.access.v1.PaginationResponse"
+              }
+            ],
+            "readOnly": true
           },
           "results": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/authzen.access.v1.Resource"
-            }
+            },
+            "readOnly": true
           }
         }
       },
@@ -456,13 +530,19 @@
         "description": "https://openid.github.io/authzen/#name-the-subject-search-api-resp",
         "properties": {
           "page": {
-            "$ref": "#/components/schemas/authzen.access.v1.PaginationResponse"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/authzen.access.v1.PaginationResponse"
+              }
+            ],
+            "readOnly": true
           },
           "results": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/authzen.access.v1.Subject"
-            }
+            },
+            "readOnly": true
           }
         }
       },
@@ -498,7 +578,41 @@
   },
   "tags": [
     {
+      "name": "authzen"
+    },
+    {
+      "name": "evaluation"
+    },
+    {
+      "name": "evaluations"
+    },
+    {
+      "name": "subject"
+    },
+    {
+      "name": "action"
+    },
+    {
+      "name": "resource"
+    },
+    {
+      "name": "properties"
+    },
+    {
+      "name": "context"
+    },
+    {
+      "name": "check"
+    },
+    {
+      "name": "search"
+    },
+    {
       "name": "Access"
     }
-  ]
+  ],
+  "externalDocs": {
+    "description": "Authorization API 1.0",
+    "url": "https://openid.github.io/authzen/"
+  }
 }
