@@ -1072,50 +1072,43 @@ const file_access_v1_access_proto_rawDesc = "" +
 	"properties\x88\x01\x01B\b\n" +
 	"\x06_countB\b\n" +
 	"\x06_totalB\r\n" +
-	"\v_properties2\xab\t\n" +
-	"\x06Access\x12\xe1\x01\n" +
+	"\v_properties2\xea\x0e\n" +
+	"\x06Access\x12\xd7\x02\n" +
 	"\n" +
-	"Evaluation\x12$.authzen.access.v1.EvaluationRequest\x1a%.authzen.access.v1.EvaluationResponse\"\x85\x01\xfaPb\n" +
+	"Evaluation\x12$.authzen.access.v1.EvaluationRequest\x1a%.authzen.access.v1.EvaluationResponse\"\xfb\x01\xfaP\xd7\x01\n" +
 	"\aauthzen\n" +
-	"\n" +
-	"evaluation\n" +
-	"\x05check\x12\x15Access Evaluation API\x1a\x03TBD*(openid.authzen.access.v1.evaluation.post\x82\xd3\xe4\x93\x02\x1a:\x01*\"\x15/access/v1/evaluation\x12\xe9\x01\n" +
-	"\vEvaluations\x12%.authzen.access.v1.EvaluationsRequest\x1a&.authzen.access.v1.EvaluationsResponse\"\x8a\x01\xfaPf\n" +
+	"\bdecision\x12\x15Access Evaluation API\x1a\x80\x01The Access Evaluation API defines the message exchange pattern between a PEP and a PDP for executing a single access evaluation.*(openid.authzen.access.v1.evaluation.post\x82\xd3\xe4\x93\x02\x1a:\x01*\"\x15/access/v1/evaluation\x12\xb4\x03\n" +
+	"\vEvaluations\x12%.authzen.access.v1.EvaluationsRequest\x1a&.authzen.access.v1.EvaluationsResponse\"\xd5\x02\xfaP\xb0\x02\n" +
 	"\aauthzen\n" +
-	"\vevaluations\n" +
-	"\x05check\x12\x16Access Evaluations API\x1a\x04TBD.*)openid.authzen.access.v1.evaluations.post\x82\xd3\xe4\x93\x02\x1b:\x01*\"\x16/access/v1/evaluations\x12\xf7\x01\n" +
-	"\rSubjectSearch\x12'.authzen.access.v1.SubjectSearchRequest\x1a(.authzen.access.v1.SubjectSearchResponse\"\x92\x01\xfaPk\n" +
+	"\tdecisions\x12\x16Access Evaluations API\x1a\xd6\x01The Access Evaluations API defines the message exchange pattern between a PEP and a PDP for evaluating multiple access evaluations within the scope of a single message exchange (also known as \"boxcarring\" requests)*)openid.authzen.access.v1.evaluations.post\x82\xd3\xe4\x93\x02\x1b:\x01*\"\x16/access/v1/evaluations\x12\xfc\x02\n" +
+	"\rSubjectSearch\x12'.authzen.access.v1.SubjectSearchRequest\x1a(.authzen.access.v1.SubjectSearchResponse\"\x97\x02\xfaP\xef\x01\n" +
 	"\aauthzen\n" +
 	"\asubject\n" +
 	"\x06search\n" +
-	"\aauthzen\x12\x12Subject Search API\x1a\x04TBD.*,openid.authzen.access.v1.search.subject.post\x82\xd3\xe4\x93\x02\x1e:\x01*\"\x19/access/v1/search/subject\x12\xec\x01\n" +
-	"\x0eResourceSearch\x12(.authzen.access.v1.ResourceSearchRequest\x1a).authzen.access.v1.ResourceSearchResponse\"\x84\x01\xfaP\\\n" +
+	"\aauthzen\x12\x12Subject Search API\x1a\x87\x01The Subject Search API returns all subjects of a given type that are permitted according to the provided Action, Resource, and Context.*,openid.authzen.access.v1.search.subject.post\x82\xd3\xe4\x93\x02\x1e:\x01*\"\x19/access/v1/search/subject\x12\xf2\x02\n" +
+	"\x0eResourceSearch\x12(.authzen.access.v1.ResourceSearchRequest\x1a).authzen.access.v1.ResourceSearchResponse\"\x8a\x02\xfaP\xe1\x01\n" +
 	"\aauthzen\n" +
 	"\bresource\n" +
-	"\x06search\x12\x13Resource Search API\x1a\x04TBD.*$openid.authzen.access.v1.search.post\x82\xd3\xe4\x93\x02\x1f:\x01*\"\x1a/access/v1/search/resource\x12\xe7\x01\n" +
-	"\fActionSearch\x12&.authzen.access.v1.ActionSearchRequest\x1a'.authzen.access.v1.ActionSearchResponse\"\x85\x01\xfaP_\n" +
+	"\x06search\x12\x13Resource Search API\x1a\x88\x01The Resource Search API returns all resources of a given type that are permitted according to the provided Action, Subject, and Context.*$openid.authzen.access.v1.search.post\x82\xd3\xe4\x93\x02\x1f:\x01*\"\x1a/access/v1/search/resource\x12\xda\x02\n" +
+	"\fActionSearch\x12&.authzen.access.v1.ActionSearchRequest\x1a'.authzen.access.v1.ActionSearchResponse\"\xf8\x01\xfaP\xd1\x01\n" +
 	"\aauthzen\n" +
 	"\x06action\n" +
-	"\x06search\x12\x11Action Search API\x1a\x04TBD.*+openid.authzen.access.v1.search.action.post\x82\xd3\xe4\x93\x02\x1d:\x01*\"\x18/access/v1/search/actionB\xcf\x04\xfaP\x9c\x03\n" +
+	"\x06search\x12\x11Action Search API\x1avThe Action Search API returns all actions that are permitted according to the provided Subject, Resource, and Context.*+openid.authzen.access.v1.search.action.post\x82\xd3\xe4\x93\x02\x1d:\x01*\"\x18/access/v1/search/actionB\xa9\x04\xfaP\xf6\x02\n" +
 	"\xb5\x01\n" +
 	"\x1dOpenID AuthZen Access Service*K\n" +
 	")OpenID Foundation - AuthZEN Working Group\x12\x1ehttps://openid.net/wg/authzen/2@\n" +
 	"\tApache v2\x1a3https://github.com/authzen/access/blob/main/LICENSE:\x051.0.0\x121\n" +
 	"\x17{{.Scheme}}://{{.Host}}\x12\x16OpenID AuthZEN service\x1a:\n" +
 	"\x15Authorization API 1.0\x12!https://openid.github.io/authzen/\"\t\n" +
-	"\aauthzen\"\f\n" +
+	"\aauthzen\"\n" +
 	"\n" +
-	"evaluation\"\r\n" +
-	"\vevaluations\"\t\n" +
+	"\bdecision\"\v\n" +
+	"\tdecisions\"\b\n" +
+	"\x06search\"\t\n" +
 	"\asubject\"\b\n" +
 	"\x06action\"\n" +
 	"\n" +
-	"\bresource\"\f\n" +
-	"\n" +
-	"properties\"\t\n" +
-	"\acontext\"\a\n" +
-	"\x05check\"\b\n" +
-	"\x06search\n" +
+	"\bresource\n" +
 	"\x15com.authzen.access.v1B\vAccessProtoP\x01Z#github.com/authzen/access/v1;access\xa2\x02\x03AAX\xaa\x02\x11Authzen.Access.V1\xca\x02\x11Authzen\\Access\\V1\xe2\x02\x1dAuthzen\\Access\\V1\\GPBMetadata\xea\x02\x13Authzen::Access::V1b\x06proto3"
 
 var (
